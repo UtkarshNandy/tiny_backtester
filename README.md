@@ -39,26 +39,15 @@ BACKTESTING SPECS:
 
 PERFORMANCE METRICS:
 
-1. CAGR: compounded annual growth rate. (Ending equity / starting equity)^(252/N) - 1, n = trading days126.097
 
-2. Volatility - Risk. Annualized standard deviation of risks. Vol = 252^.5 * StdDev(daily returns)
-
-3. Sharpe ratio - risk adjusted returns. Mean(daily returns) / stdDev(daily returns) * 252^.5
-
-4. Max drawdown - Largest peak to trough equity drop 
-
-5. Win rate
-
-6. Avg exposure 
-
-| **Metric**                             | **Definition**                                                              | **Formula**                                                                                                                |                        |                      |
-| -------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------- | -------------------- |
-| **CAGR** (Compound Annual Growth Rate) | Smoothed annual growth rate of equity, assuming reinvestment.               | $\text{CAGR} = \left(\frac{\text{Equity}_{\text{end}}}{\text{Equity}_{\text{start}}}\right)^{\tfrac{252}{N}} - 1$          |                        |                      |
-| **Volatility (Vol)**                   | Annualized standard deviation of daily returns.                             | $\text{Vol} = \sqrt{252} \cdot \text{StdDev}(\text{daily returns})$                                                        |                        |                      |
-| **Sharpe Ratio (252)**                 | Risk-adjusted return per unit of volatility, annualized (252 trading days). | $\text{Sharpe} = \frac{\mu_{\text{daily}}}{\sigma_{\text{daily}}} \cdot \sqrt{252}$                                        |                        |                      |
-| **Max Drawdown (MDD)**                 | Largest peak-to-trough decline in equity curve.                             | $\text{MDD} = \min_t \left(\frac{\text{Equity}_t - \max_{s \leq t}\text{Equity}_s}{\max_{s \leq t}\text{Equity}_s}\right)$ |                        |                      |
-| **Win Rate**                           | Fraction of trades that are profitable.                                     | $\text{Win Rate} = \tfrac{\ \text{Winning Trades}}{\ \text{Total Trades}}$                                               |                        |                      |
-| **Avg Exposure**                       | Average fraction of time strategy has an open position.                     | $\text{Avg Exposure} = \tfrac{\sum (\text{position} \neq 0)}{\text{Total Bars}}$                                           |                        |                      |
-| **Rolling Sharpe**                     | Stability check: Sharpe computed over rolling windows (e.g., 6 months).     | Same Sharpe formula, but over window (≈126 trading days).                                                                  |                        |                      |
-| **Turnover**                           | Frequency of trading; measures capital churn.                               | (\text{Turnover} = \tfrac{\sum                                                                                             | \Delta \text{Position} | }{\text{# periods}}) |
-| **Avg Holding Time**                   | Mean number of days a position is held before closing.                      | $\text{Avg Holding Time} = \tfrac{\sum \text{holding days per trade}}{\ \text{trades}}$                                   |                        |                      |
+| Metric                  | Description                                                                 | Formula                                                                                  |
+|--------------------------|-----------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| **CAGR** (Compound Annual Growth Rate) | Smoothed annual growth rate of equity, assuming reinvestment.               | CAGR = (Equity_end / Equity_start)^(252 / N) - 1                                         |
+| **Volatility (Vol)**     | Annualized standard deviation of daily returns.                             | Vol = sqrt(252) * StdDev(daily returns)                                                  |
+| **Sharpe Ratio (252)**   | Risk-adjusted return per unit of volatility, annualized (252 trading days). | Sharpe = (mean_daily_return / std_daily_return) * sqrt(252)                              |
+| **Max Drawdown (MDD)**   | Largest peak-to-trough decline in equity curve.                             | MDD = min_t ( Equity_t / max_{s ≤ t}(Equity_s) - 1 )                                     |
+| **Win Rate**             | Fraction of trades that are profitable.                                     | Win Rate = Winning Trades / Total Trades                                                 |
+| **Avg Exposure**         | Average fraction of time strategy has an open position.                     | Avg Exposure = (Number of bars with position ≠ 0) / Total Bars                           |
+| **Rolling Sharpe**       | Stability check: Sharpe computed over rolling windows (e.g., 6 months).     | Same Sharpe formula, but over rolling window (≈126 trading days)                         |
+| **Turnover**             | Frequency of trading; measures capital churn.                               | Turnover = (Sum of absolute position changes) / Number of periods                        |
+| **Avg Holding Time**     | Mean number of days a position is held before closing.                      | Avg Holding Time = (Total holding days across trades) / Number of trades                 |
