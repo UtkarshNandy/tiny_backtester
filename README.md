@@ -51,3 +51,10 @@ PERFORMANCE METRICS:
 | **Rolling Sharpe**       | Stability check: Sharpe computed over rolling windows (e.g., 6 months).     | Same Sharpe formula, but over rolling window (≈126 trading days)                         |
 | **Turnover**             | Frequency of trading; measures capital churn.                               | Turnover = (Sum of absolute position changes) / Number of periods                        |
 | **Avg Holding Time**     | Mean number of days a position is held before closing.                      | Avg Holding Time = (Total holding days across trades) / Number of trades                 |
+
+
+VALIDATION PLAN:
+
+1. Train data: 2005 - 2016. Test data: 2017-2025
+2. No peeking at test data during parameter tuning
+3. Test only one 1 ticker to begin
